@@ -126,6 +126,22 @@ if submitted:
     st.markdown("### Korzyści z Dostępnych Ulg:")
     st.write(f"**Ulga Termomodernizacyjna (dla podatku 12%):** -{results['tax_relief']:,} zł".replace(',', ' '))
     st.success(f"**Koszt końcowy po Ulgach: {results['grand_total'] - results['tax_relief']:,} zł**".replace(',', ' '))
+    report = f"""
+🚀 *Новый лид из калькулятора!*
+
+📊 *Конфигурация:*
+- Мощность: {power} kWp
+- Инвертор: {inverter}
+- Панели: {panel}
+- Крыша: {roof}
+- АКБ: {battery}
+
+💰 *Стоимость:*
+- Итого: **{results['grand_total']} PLN** (Brutto)
+- Ульга: {results['tax_relief']} PLN
+    """
+    
+    send_telegram(report)
     
     st.markdown("### Co Otrzymujesz:")
     st.markdown(f"""
